@@ -43,29 +43,29 @@ function MainPage() {
 
 const handleAddText = () => {
   if (textInput.trim()) {
-    const timestamp = formatDate(); // Get the current time in the desired format
+    const timestamp = formatDate(); 
     const noteWithTime = {
-      text: textInput, // Save the text
-      timestamp: timestamp, // Save the timestamp
+      text: textInput, 
+      timestamp: timestamp, 
     };
 
-    // Update the notes for the active item by storing the note
+   
     setItemNotes((prevNotes) => {
       const updatedNotes = {
         ...prevNotes,
         [activeItem.name]: [
-          ...(prevNotes[activeItem.name] || []), // If notes exist, append new one
-          noteWithTime, // Store the note
+          ...(prevNotes[activeItem.name] || []), 
+          noteWithTime, 
         ],
       };
 
-      // Save updated notes to localStorage
+    
       localStorage.setItem('itemNotes', JSON.stringify(updatedNotes));
 
-      return updatedNotes; // Return updated notes to set the state
+      return updatedNotes;
     });
 
-    setTextInput(''); // Clear the text input after saving
+    setTextInput(''); 
   }
 };
 
@@ -101,7 +101,6 @@ const handleAddText = () => {
       const newItem = { name, circleContent, color: selectedColor };
       setItems((prevItems) => {
         const updatedItems = [...prevItems, newItem];
-        // Save updated items to localStorage
         localStorage.setItem('items', JSON.stringify(updatedItems));
         return updatedItems;
       });
@@ -118,7 +117,6 @@ const handleAddText = () => {
       const newItem = { name, circleContent, color: selectedColor };
       setItems((prevItems) => {
         const updatedItems = [...prevItems, newItem];
-        // Save updated items to localStorage
         localStorage.setItem('items', JSON.stringify(updatedItems));
         return updatedItems;
       });
@@ -129,16 +127,14 @@ const handleAddText = () => {
     }
   };
   useEffect(() => {
-  // Load item notes from localStorage when the component mounts
   const savedNotes = localStorage.getItem('itemNotes');
   if (savedNotes) {
-    setItemNotes(JSON.parse(savedNotes)); // Parse and set the notes from localStorage
+    setItemNotes(JSON.parse(savedNotes)); 
   }
 }, []);
 
 
   useEffect(() => {
-    // Load items and notes from localStorage on component mount
     const storedItems = JSON.parse(localStorage.getItem('items')) || [];
     const storedNotes = JSON.parse(localStorage.getItem('itemNotes')) || {};
     setItems(storedItems);
@@ -287,17 +283,17 @@ const handleAddText = () => {
             backgroundColor: 'white',
           }}
         >
-          <div>{note.text}</div> {/* Render the note text */}
+          <div>{note.text}</div> 
           <div
           className="timestamp-div"
             style={{
               fontSize: '0.9rem',
-              color: '#787878', // Timestamp color (light gray)
+              color: '#787878', 
               marginTop: '5px',
-              textWrap:'nowrap' // Add some space between text and timestamp
+              textWrap:'nowrap' 
             }}
           >
-            {note.timestamp} {/* Render the timestamp */}
+            {note.timestamp} 
           </div>
         </li>
       ))}
