@@ -1,0 +1,19 @@
+/* Default styling for larger screens */
+.leftSide, .rightSide {
+  display: inline-block;
+  width: 50%; /* Adjust this as needed */
+}
+
+@media screen and (max-width: 800px) {
+  /* On screens smaller than 800px */
+  .leftSide, .rightSide {
+    width: 100%;
+    display: block;
+    margin: 0;
+  }
+
+  /* Optional: If you want to stack them in a specific order or adjust the layout further */
+  .leftSide {
+    margin-bottom: 20px; /* Add some space between the left and right sections */
+  }
+}
